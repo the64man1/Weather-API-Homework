@@ -1,0 +1,19 @@
+header {
+    background-image: url('https://mdbootstrap.com/img/new/fluid/city/018.jpg');
+    background-size: 100% 100%;
+    height: 300px;
+}
+
+input {
+    border-color: #007BFF;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  font-style: italic;
+  color: #fff;
+  border: 0.4rem solid #fff;
+  border-radius: 2rem;
+  text-transform: uppercase;    
+}
