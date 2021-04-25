@@ -44,7 +44,7 @@ window.addEventListener('load', function() {
         }
     }
 
-    function getWeather (city) {
+    function getTodaysWeather (city) {
         var endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d91f911bcf2c0f925fb6535547a5ddc9&units=imperial`;
         fetch(endpoint)
           .then((response) => response.json())
@@ -53,11 +53,21 @@ window.addEventListener('load', function() {
             var formatToday = `${today.getMonth() + 1}/${today.getDate()}`
             document.querySelector("#date-today").textContent = formatToday;
 
-            
+            var tempToday = data.main.temp;
+            document.querySelector("#temp-today").textContent = `${tempToday} °F`;
+
+            var feelsLikeToday = data.main.feels_like;
+            document.querySelector("#feels-like-today").textContent = `${feelsLikeToday} °F`;
+
+            var humidityToday = data.main.humidity;
+            document.querySelector("#humidity-today").textContent = `${humidityToday}%`;
+
+            //var skiesToday = data.weather.description;
+            //document.querySelector("#skies-today").textContent = skiesToday;
           })
     }
 
-    getWeather(existingHistory[0]);
+    getTodaysWeather(existingHistory[0]);
 
     printHistory();
 
