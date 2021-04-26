@@ -11,6 +11,7 @@ window.addEventListener('load', function() {
                 console.log("already in history")
                 //run getWeather function for this city
                 getTodaysWeather(newCity);
+                getForecast(newCity);
                 return;
             };
         };
@@ -33,15 +34,24 @@ window.addEventListener('load', function() {
             handleHistory(citySearched);
             document.querySelector('#city-search').value = '';
         }
-        $('#city-today').textContent = citySearched;
     }
 
     function printHistory () {
         for (let i = 0; i < existingHistory.length; i++) {
             var liEl = document.createElement("li");
+            liEl.id = i;
             liEl.classList.add("list-group-item", "list-group-item-action");
             liEl.textContent = existingHistory[i];
             $("#history").append(liEl);
+
+            liEl.addEventListener("click", function (event) {
+                var id = this.id;
+                var city = existingHistory[id];
+                existingHistory.splice(id, 1);
+                existingHistory.unshift(city);
+                localStorage.setItem('history', JSON.stringify(existingHistory));
+                location.reload();
+            })
         }
     }
 
@@ -67,6 +77,8 @@ window.addEventListener('load', function() {
             //var skiesToday = data.weather.description;
             //document.querySelector("#skies-today").textContent = skiesToday;
           });
+
+        document.querySelector('#city-today').textContent = city;
     };
 
     function getForecast (city) {
@@ -99,8 +111,6 @@ window.addEventListener('load', function() {
     getForecast(existingHistory[0]);
 
     printHistory();
-
-    document.querySelector('#city-today').textContent = existingHistory[0];
     
     $("#btn").on('click', getCitySearched);
 
