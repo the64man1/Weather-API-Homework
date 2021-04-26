@@ -28,10 +28,10 @@
                  <div class="col-3">
                  </div>
             </div>
-            <div class="row" id="bottomhalf">
-                <div class="col-9 p-3">
+            <div class="row" hidden id="bottomhalf">
+                <div class="col-9 p-3" id="console">
                     <h4>Today's Weather in <span id="city-today"></span>:</h4>
-                    <div id="today" class="mt-3 border">
+                    <div id="today" class="mt-3 card-body">
                         <ul>
                             <li class="list-unstyled"><span id="date-today"></span><img id="pic-today"></li>
                             <li class="list-unstyled">Temp: <span id="temp-today"></span></li>
@@ -40,54 +40,53 @@
                             <li class="list-unstyled" id="UV-today-li">UV Index: <span id="UV-today"></span></li>
                         </ul>
                     </div>
-                    <div><h4 class='mt-2' hidden id="five-day">5-Day Forecast:</h4></div>
-                    <hr>
-                    <div class="row" id="forecast">
-                        <div class="col s6 border" id="day1">
+                    <div><h4 class='mt-2' id="five-day">5-Day Forecast:</h4></div>
+                    <div class="row" id="forecast12">
+                        <div class="col s6 card" id="day1">
                             <ul>
-                                <li class="list-unstyled"><span id="date-day1"></span></li>
+                                <li class="list-unstyled"><span id="date-day1"></span><img id="pic-day1"></li>
                                 <li class="list-unstyled">Temp: <span id="temp-day1"></span></li>
                                 <li class="list-unstyled">Wind Speed: <span id="wind-speed-day1"></span></li>
                                 <li class="list-unstyled">Humidity: <span id="humidity-day1"></span></li>
-                                <li class="list-unstyled">Skies: <span id="skies-day1"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day1"></span></li>
                             </ul>
                         </div>
-                        <div class="col s6 border" id="day2">
+                        <div class="col s6 card" id="day2">
                             <ul>
-                                <li class="list-unstyled"><span id="date-day2"></span></li>
+                                <li class="list-unstyled"><span id="date-day2"></span><img id="pic-day2"></li>
                                 <li class="list-unstyled">Temp: <span id="temp-day2"></span></li>
                                 <li class="list-unstyled">Wind Speed: <span id="wind-speed-day2"></span></li>
                                 <li class="list-unstyled">Humidity: <span id="humidity-day2"></span></li>
-                                <li class="list-unstyled">Skies: <span id="skies-day2"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day2"></span></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s4 border" id="day3">
+                    <div class="row" id="forecast345">
+                        <div class="col s4 card" id="day3">
                             <ul>
-                                <li class="list-unstyled"><span id="date-day3"></span></li>
+                                <li class="list-unstyled"><span id="date-day3"></span><img id="pic-day3"></li>
                                 <li class="list-unstyled">Temp: <span id="temp-day3"></span></li>
                                 <li class="list-unstyled">Wind Speed: <span id="wind-speed-day3"></span></li>
                                 <li class="list-unstyled">Humidity: <span id="humidity-day3"></span></li>
-                                <li class="list-unstyled">Skies: <span id="skies-day3"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day3"></span></li>
                             </ul>
                         </div>
-                        <div class="col s4 border" id="day4">
+                        <div class="col s4 card" id="day4">
                             <ul>
-                                <li class="list-unstyled"><span id="date-day4"></span></li>
+                                <li class="list-unstyled"><span id="date-day4"></span><img id="pic-day4"></li>
                                 <li class="list-unstyled">Temp: <span id="temp-day4"></span></li>
                                 <li class="list-unstyled">Wind Speed: <span id="wind-speed-day4"></span></li>
                                 <li class="list-unstyled">Humidity: <span id="humidity-day4"></span></li>
-                                <li class="list-unstyled">Skies: <span id="skies-day4"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day4"></span></li>
                             </ul>
                         </div>
-                        <div class="col s4 border" id="day5">
+                        <div class="col s4 card" id="day5">
                             <ul>
-                                <li class="list-unstyled"><span id="date-day5"></span></li>
+                                <li class="list-unstyled"><span id="date-day5"></span><img id="pic-day5"></li>
                                 <li class="list-unstyled">Temp: <span id="temp-day5"></span></li>
                                 <li class="list-unstyled">Wind Speed: <span id="wind-speed-day5"></span></li>
                                 <li class="list-unstyled">Humidity: <span id="humidity-day5"></span></li>
-                                <li class="list-unstyled">Skies: <span id="skies-day5"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day5"></span></li>
                             </ul>
                         </div>
                     </div>
