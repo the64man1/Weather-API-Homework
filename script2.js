@@ -74,8 +74,7 @@ window.addEventListener('load', function() {
             var humidityToday = data.main.humidity;
             document.querySelector("#humidity-today").textContent = `${humidityToday}%`;
 
-            //var skiesToday = data.weather.description;
-            //document.querySelector("#skies-today").textContent = skiesToday;
+            getUV(data.coord.lat, data.coord.lon);
           });
 
         document.querySelector('#city-today').textContent = city;
@@ -109,6 +108,23 @@ window.addEventListener('load', function() {
                 }
             }
         })
+    }
+
+    function getUV(lat, lon) {
+        fetch(`https://api.openweathermap.org/data/2.5/uvi?appid=d91f911bcf2c0f925fb6535547a5ddc9&lat=${lat}&lon=${lon}`)
+          .then((response) => response.json())
+          .then((data) => {
+                document.querySelector('#UV-today').textContent = data.value;
+                var liUV = document.querySelector('#UV-today-li');
+
+                if (data.value < 3) {
+                    $(liUV).addClass(['btn', 'btn-success']);
+                } else if (data.value > 7) {
+                    $(liUV).addClass(['btn', 'btn-danger']);
+                } else {
+                    $(liUV).addClass(['btn', 'btn-warning']);
+                }
+          })
     }
 
     getTodaysWeather(existingHistory[0]);
