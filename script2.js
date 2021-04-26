@@ -65,11 +65,13 @@ window.addEventListener('load', function() {
             //var formatToday = `${today.getMonth() + 1}/${today.getDate()}`;
             document.querySelector("#date-today").textContent = formatToday;
 
+            $('#pic-today').attr('src', `http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
+
             var tempToday = data.main.temp;
             document.querySelector("#temp-today").textContent = `${tempToday} °F`;
 
-            var feelsLikeToday = data.main.feels_like;
-            document.querySelector("#feels-like-today").textContent = `${feelsLikeToday} °F`;
+            var windToday = data.wind.speed;
+            document.querySelector("#wind-speed-today").textContent = `${windToday} MPH`;
 
             var humidityToday = data.main.humidity;
             document.querySelector("#humidity-today").textContent = `${humidityToday}%`;
@@ -100,8 +102,8 @@ window.addEventListener('load', function() {
                     var temp = data.list[i].main.temp;
                     document.querySelector(`#temp-day${dayCounter}`).textContent = `${temp} °F`;
 
-                    var feelsLike = data.list[i].main.feels_like;
-                    document.querySelector(`#feels-like-day${dayCounter}`).textContent = `${feelsLike} °F`;
+                    var windSpeed = data.list[i].wind.speed;
+                    document.querySelector(`#wind-speed-day${dayCounter}`).textContent = `${windSpeed} MPH`;
 
                     var humidity = data.list[i].main.humidity;
                     document.querySelector(`#humidity-day${dayCounter}`).textContent = `${humidity}%`;
