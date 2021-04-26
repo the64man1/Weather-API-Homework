@@ -82,6 +82,8 @@ window.addEventListener('load', function() {
     };
 
     function getForecast (city) {
+        $("#five-day").removeAttr("hidden");
+        var dayCounter = 0;
         var endpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=d91f911bcf2c0f925fb6535547a5ddc9&units=imperial`;
         fetch(endpoint)
           .then((response) => response.json())
@@ -90,18 +92,20 @@ window.addEventListener('load', function() {
 
                 // this conditional ensures that we are only getting one set of data for each day, in this case the data at 3pm
                 if (data.list[i].dt_txt.indexOf('15:00:00') !== -1) {
+                    dayCounter++;
+
                     var rawDate = new Date(data.list[i].dt_txt);
                     var date = rawDate.toLocaleDateString();
-                    document.querySelector(`#date-day${i}`).textContent = date;
+                    document.querySelector(`#date-day${dayCounter}`).textContent = date;
                 
                     var temp = data.list[i].main.temp;
-                    document.querySelector(`#temp-day${i}`).textContent = `${temp} °F`;
+                    document.querySelector(`#temp-day${dayCounter}`).textContent = `${temp} °F`;
 
                     var feelsLike = data.list[i].main.feels_like;
-                    document.querySelector(`#feels-like-day${i}`).textContent = `${feelsLike} °F`;
+                    document.querySelector(`#feels-like-day${dayCounter}`).textContent = `${feelsLike} °F`;
 
                     var humidity = data.list[i].main.humidity;
-                    document.querySelector(`#humidity-day${i}`).textContent = `${humidity}%`;
+                    document.querySelector(`#humidity-day${dayCounter}`).textContent = `${humidity}%`;
                 }
             }
         })
