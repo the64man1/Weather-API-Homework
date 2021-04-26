@@ -10,6 +10,7 @@ window.addEventListener('load', function() {
             if (existingHistory[i].toLowerCase() === newCity.toLowerCase()){
                 console.log("already in history")
                 //run getWeather function for this city
+                getTodaysWeather(newCity);
                 return;
             };
         };
@@ -50,7 +51,8 @@ window.addEventListener('load', function() {
           .then((response) => response.json())
           .then((data) => {
             var today = new Date();
-            var formatToday = `${today.getMonth() + 1}/${today.getDate()}`
+            var formatToday = today.toLocaleDateString();
+            //var formatToday = `${today.getMonth() + 1}/${today.getDate()}`;
             document.querySelector("#date-today").textContent = formatToday;
 
             var tempToday = data.main.temp;
@@ -64,10 +66,37 @@ window.addEventListener('load', function() {
 
             //var skiesToday = data.weather.description;
             //document.querySelector("#skies-today").textContent = skiesToday;
-          })
+          });
+    };
+
+    function getForecast (city) {
+        var endpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=d91f911bcf2c0f925fb6535547a5ddc9&units=imperial`;
+        fetch(endpoint)
+          .then((response) => response.json())
+          .then((data) => {
+            for (let i = 0; i < data.list.length; i++) {
+
+                // this conditional ensures that we are only getting one set of data for each day, in this case the data at 3pm
+                if (data.list[i].dt_txt.indexOf('15:00:00') !== -1) {
+                    var rawDate = new Date(data.list[i].dt_txt);
+                    var date = rawDate.toLocaleDateString();
+                    document.querySelector(`#date-day${i}`).textContent = date;
+                
+                    var temp = data.list[i].main.temp;
+                    document.querySelector(`#temp-day${i}`).textContent = `${temp} °F`;
+
+                    var feelsLike = data.list[i].main.feels_like;
+                    document.querySelector(`#feels-like-day${i}`).textContent = `${feelsLike} °F`;
+
+                    var humidity = data.list[i].main.humidity;
+                    document.querySelector(`#humidity-day${i}`).textContent = `${humidity}%`;
+                }
+            }
+        })
     }
 
     getTodaysWeather(existingHistory[0]);
+    getForecast(existingHistory[0]);
 
     printHistory();
 
