@@ -1,3 +1,4 @@
+
 # Weather-API-Homework
 
 This is my Weather API application.
@@ -9,4 +10,4 @@ Previous searches are stored in local storage and displayed on the right side of
 Link to github repository where source files are held: https://github.com/the64man1/Weather-API-Homework/<br>
 Link to github pages website for the application: https://the64man1.github.io/Weather-API-Homework/
 
-![Weather App](https://user-images.githubusercontent.com/74144055/114284392-22934680-9a15-11eb-9963-cd980cebd30e.png)
+![Weather App (1)](https://user-images.githubusercontent.com/74144055/116642819-4e7b5b00-a935-11eb-8942-083c5cb2edfc.png)
