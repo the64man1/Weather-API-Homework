@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Weather App</title>
+        <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+      <link rel="stylesheet" href="style.css" />  
+    </head>
+    <body>
+        <header class="container-fluid text-center">
+            <h1>Find the weather in your city!</h1>
+        </header>
+        <div class="container-fluid">
+            <div class="row" id="top-half">
+                <div class="col-9">
+                    <h2>Search your city here</h2>
+                    <input type="text" class="input" id="city-search" />
+                    <button type="submit" class="btn btn-outline-primary" id="btn">Submit</button>
+                 </div>
+                 <div class="col-3">
+                 </div>
+            </div>
+            <div class="row" hidden id="bottomhalf">
+                <div class="col-9 p-3" id="console">
+                    <h4>Today's Weather in <span id="city-today"></span>:</h4>
+                    <div id="today" class="mt-3 card-body">
+                        <ul>
+                            <li class="list-unstyled"><span id="date-today"></span><img id="pic-today"></li>
+                            <li class="list-unstyled">Temp: <span id="temp-today"></span></li>
+                            <li class="list-unstyled">Wind Speed: <span id="wind-speed-today"></span></li>
+                            <li class="list-unstyled">Humidity: <span id="humidity-today"></span></li>
+                            <li class="list-unstyled" id="UV-today-li">UV Index: <span id="UV-today"></span></li>
+                        </ul>
+                    </div>
+                    <div><h4 class='mt-2' id="five-day">5-Day Forecast:</h4></div>
+                    <div class="row" id="forecast12">
+                        <div class="col s6 card" id="day1">
+                            <ul>
+                                <li class="list-unstyled"><span id="date-day1"></span><img id="pic-day1"></li>
+                                <li class="list-unstyled">Temp: <span id="temp-day1"></span></li>
+                                <li class="list-unstyled">Wind Speed: <span id="wind-speed-day1"></span></li>
+                                <li class="list-unstyled">Humidity: <span id="humidity-day1"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day1"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col s6 card" id="day2">
+                            <ul>
+                                <li class="list-unstyled"><span id="date-day2"></span><img id="pic-day2"></li>
+                                <li class="list-unstyled">Temp: <span id="temp-day2"></span></li>
+                                <li class="list-unstyled">Wind Speed: <span id="wind-speed-day2"></span></li>
+                                <li class="list-unstyled">Humidity: <span id="humidity-day2"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day2"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row" id="forecast345">
+                        <div class="col s4 card" id="day3">
+                            <ul>
+                                <li class="list-unstyled"><span id="date-day3"></span><img id="pic-day3"></li>
+                                <li class="list-unstyled">Temp: <span id="temp-day3"></span></li>
+                                <li class="list-unstyled">Wind Speed: <span id="wind-speed-day3"></span></li>
+                                <li class="list-unstyled">Humidity: <span id="humidity-day3"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day3"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col s4 card" id="day4">
+                            <ul>
+                                <li class="list-unstyled"><span id="date-day4"></span><img id="pic-day4"></li>
+                                <li class="list-unstyled">Temp: <span id="temp-day4"></span></li>
+                                <li class="list-unstyled">Wind Speed: <span id="wind-speed-day4"></span></li>
+                                <li class="list-unstyled">Humidity: <span id="humidity-day4"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day4"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col s4 card" id="day5">
+                            <ul>
+                                <li class="list-unstyled"><span id="date-day5"></span><img id="pic-day5"></li>
+                                <li class="list-unstyled">Temp: <span id="temp-day5"></span></li>
+                                <li class="list-unstyled">Wind Speed: <span id="wind-speed-day5"></span></li>
+                                <li class="list-unstyled">Humidity: <span id="humidity-day5"></span></li>
+                                <li class="list-unstyled">Feels Like: <span id="feels-like-day5"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <h4>History of Cities Searched</h4>
+                    <button type="submit" class="btn btn-outline-primary mb-2" id="clearBtn">Clear History</button>
+                    <ul class="list-group history" id="history"></ul>
+                </div>
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script2.js"></script>
+    </body>
+</html>
