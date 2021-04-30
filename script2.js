@@ -1,9 +1,9 @@
-window.addEventListener('load', function() {
+window.addEventListener("load", function() {
     // get search history from storage, or if there isn't a history in storage, start with an empty array
     var existingHistory = JSON.parse(localStorage.getItem('history')) || [];
 
     // function for setting new cities into local storage
-    function handleHistory (newCity) {
+    function makeHistory (newCity) {
         // if the city is already in storage, don't add it again
         for (let i = 0; i<existingHistory.length; i++) {
             if (existingHistory[i].toLowerCase() === newCity.toLowerCase()){
@@ -31,7 +31,7 @@ window.addEventListener('load', function() {
         if (citySearched) {
             getTodaysWeather(citySearched);
             getForecast(citySearched);
-            handleHistory(citySearched);
+            makeHistory(citySearched);
             document.querySelector('#city-search').value = '';
         };
     };
@@ -41,7 +41,7 @@ window.addEventListener('load', function() {
         for (let i = 0; i < existingHistory.length; i++) {
             var liEl = document.createElement("li");
             liEl.id = i;
-            liEl.classList.add("list-group-item", "list-group-item-action");
+            liEl.classList.add("list-group-item-action", "list-group-item");
             liEl.textContent = existingHistory[i];
             $("#history").append(liEl);
 
@@ -62,8 +62,8 @@ window.addEventListener('load', function() {
         // unhide the console
         $('#console').removeAttr("hidden");
         // search API
-        var endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d91f911bcf2c0f925fb6535547a5ddc9&units=imperial`;
-        fetch(endpoint)
+        var endURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=af1b189b0fd1d35663b353e6a5c87f59&units=imperial`;
+        fetch(endURL)
           .then((response) => response.json())
           .then((data) => {
             // put in today's date, icon of weather, temp and wind and humidity, and run UV function
@@ -95,8 +95,8 @@ window.addEventListener('load', function() {
         $("#five-day").removeAttr("hidden");
         //counter that links returned data to specific day ID in html
         var dayCounter = 0;
-        var endpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=d91f911bcf2c0f925fb6535547a5ddc9&units=imperial`;
-        fetch(endpoint)
+        var endURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=af1b189b0fd1d35663b353e6a5c87f59&units=imperial`;
+        fetch(endURL)
           .then((response) => response.json())
           .then((data) => {
             for (let i = 0; i < data.list.length; i++) {
@@ -130,7 +130,7 @@ window.addEventListener('load', function() {
 
     // function to get UV info for today in city
     function getUV(lat, lon) {
-        fetch(`https://api.openweathermap.org/data/2.5/uvi?appid=d91f911bcf2c0f925fb6535547a5ddc9&lat=${lat}&lon=${lon}`)
+        fetch(`https://api.openweathermap.org/data/2.5/uvi?appid=af1b189b0fd1d35663b353e6a5c87f59&lat=${lat}&lon=${lon}`)
           .then((response) => response.json())
           .then((data) => {
                 document.querySelector('#UV-today').textContent = data.value;
